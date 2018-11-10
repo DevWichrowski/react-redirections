@@ -37,10 +37,30 @@ class App extends Component {
 	};
 
 	generateUrl = () => {
-		this.setState({
-			result: this.redirectUrls(this.state.urlsFrom, this.state.urlsTo)
-		});
+		if (this.state.urlsFrom.length == this.state.urlsTo.length) {
+			this.setState({
+				result: this.redirectUrls(this.state.urlsFrom, this.state.urlsTo)
+			});
+		} else {
+			this.setState({
+				result: 'Błąd: Nieprawidłowa ilość przekierowań, czegoś tutaj brakuje.'
+			});
+			// alert(this.findDeselectedItem(this.urlsFrom, this.urlsTo));
+		}
 	};
+
+	// findDeselectedItem(urlsFrom, urlsTo) {
+	// 	urlsTo = this.urlsTo.length;
+	// 	urlsFrom = this.urlsFrom.length;
+
+	// 	// loop through previous array
+	// 	for (var j = 0; j < urlsFrom; j++) {
+	// 		// look for same thing in new array
+	// 		if (urlsTo.indexOf(urlsFrom[j]) == -1) return urlsFrom[j];
+	// 	}
+
+	// 	return null;
+	// }
 
 	copyToClipboard = (e) => {
 		this.textArea.select();
@@ -48,8 +68,10 @@ class App extends Component {
 		// This is just personal preference.
 		// I prefer to not show the the whole text area selected.
 		e.target.focus();
-    this.setState({ copySuccess: 'Skopiowano do schowka!' });
-    setTimeout(() => {this.setState({ copySuccess: '' })}, 2000);
+		this.setState({ copySuccess: 'Skopiowano do schowka!' });
+		setTimeout(() => {
+			this.setState({ copySuccess: '' });
+		}, 2000);
 	};
 
 	render() {
@@ -64,7 +86,10 @@ class App extends Component {
 						<strong>prawym</strong> polu na co mają być przekierowane
 					</p>
 					<p>W polu poniżej wygenerują się reguły gotowe do wklejenia w plik .htaccess </p>
-             <p> Możesz skopiować wygenerowane przekierowania za pomoca przycisku <strong>Kopiuj!</strong></p>
+					<p>
+						{' '}
+						Możesz skopiować wygenerowane przekierowania za pomoca przycisku <strong>Kopiuj!</strong>
+					</p>
 				</details>
 				<div className="redirects">
 					<div className="textarea-container">
