@@ -40,6 +40,10 @@ hr {
   display: block;
 }
 
+summary {
+  outline: none;
+}
+
 .redirects {
   width: 100%;
   display: flex;
@@ -56,9 +60,9 @@ hr {
 }
 
 .textarea-container {
-  width: 50%;
+  width: 49%;
   height: 200px;
-  margin: 30px;
+  // margin: 30px;
 
   textarea {
     width: 100%;
@@ -79,7 +83,7 @@ hr {
 }
 
 .btn-success{
-  margin-top: 20px!important;
+  margin-top: 50px!important;
   margin-bottom: 50px!important;
-  width: 94.1%;
+  width: 100%;
 }
