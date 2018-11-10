@@ -87,3 +87,13 @@ summary {
   margin-bottom: 50px!important;
   width: 100%;
 }
+
+.error{
+  // -webkit-box-shadow: 8px 8px 24px -10px rgba(0, 0, 0, 0.75);
+  // -moz-box-shadow: 8px 8px 24px -10px rgba(0, 0, 0, 0.75);
+  // box-shadow: 8px 8px 24px -10px rgba(0, 0, 0, 0.75);
+  // border: 1px solid rgb(255, 0, 0);
+  @extend .form-control;
+  border: 1px solid rgb(255, 0, 0);
+  border-radius: 3px;
+}

@@ -9,7 +9,9 @@ class App extends Component {
 			urlsFrom: [],
 			urlsTo: [],
 			result: '',
-			copySuccess: ''
+			copySuccess: '',
+			errorLeft: false,
+			errorRight: false
 		};
 	}
 
@@ -39,17 +41,33 @@ class App extends Component {
 	generateUrl = () => {
 		if (this.state.urlsFrom.length == this.state.urlsTo.length) {
 			this.setState({
-				result: this.redirectUrls(this.state.urlsFrom, this.state.urlsTo)
+				result: this.redirectUrls(this.state.urlsFrom, this.state.urlsTo),
+				errorLeft: false,
+				errorRight: false
 			});
-		} else if(this.state.urlsFrom.length > this.state.urlsTo.length) {
+		} else if (this.state.urlsFrom.length > this.state.urlsTo.length) {
 			this.setState({
-				result: 'Błąd: Nieprawidłowa ilość przekierowań.\n Za mało przekierowań w prawym polu:   > Przekieruj na <'
-      });
-		} else if(this.state.urlsFrom.length < this.state.urlsTo.length){
-      this.setState({
-				result: 'Błąd: Nieprawidłowa ilość przekierowań.\n Za mało przekierowań w lewym polu:   > Przekieruj z <'
-      });
-    }
+				result:
+					'Błąd: Nieprawidłowa ilość przekierowań.\n Za mało przekierowań w prawym polu:   > Przekieruj na <',
+				errorRight: true,
+				errorLeft: false
+			});
+			return (
+				<textarea
+					id="left-textarea"
+					className="form-control"
+					onChange={this.changeUrlFrom}
+					style="fontSize: 100px"
+				/>
+			);
+		} else if (this.state.urlsFrom.length < this.state.urlsTo.length) {
+			this.setState({
+				result:
+					'Błąd: Nieprawidłowa ilość przekierowań.\n Za mało przekierowań w lewym polu:   > Przekieruj z <',
+				errorLeft: true,
+				errorRight: false
+			});
+		}
 	};
 
 	copyToClipboard = (e) => {
@@ -84,11 +102,19 @@ class App extends Component {
 				<div className="redirects">
 					<div className="textarea-container">
 						<label htmlFor="left-textarea">Przekieruj z:</label>
-						<textarea id="left-textarea" className="form-control" onChange={this.changeUrlFrom} />
+						<textarea
+							id="left-textarea"
+							className={this.state.errorLeft ? 'error' : 'form-control'}
+							onChange={this.changeUrlFrom}
+						/>
 					</div>
 					<div className="textarea-container">
 						<label htmlFor="right-textarea">Przekieruj na:</label>
-						<textarea id="right-textarea" className="form-control" onChange={this.changeUrlTo} />
+						<textarea
+							id="right-textarea"
+							className={this.state.errorRight ? 'error' : 'form-control'}
+							onChange={this.changeUrlTo}
+						/>
 					</div>
 				</div>
 				<button id="result-textarea" className="center-item btn btn-success" onClick={this.generateUrl}>

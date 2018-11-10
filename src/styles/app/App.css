@@ -80,13 +80,13 @@ summary {
   height: 100%;
 }
 
-.form-control {
+.form-control, .error {
   -webkit-box-shadow: 8px 8px 24px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 8px 8px 24px -10px rgba(0, 0, 0, 0.75);
   border: 1px solid green;
 }
 
-.form-control:focus {
+.form-control:focus, .error:focus {
   border: none !important;
   -webkit-box-shadow: 8px 8px 24px -10px rgba(0, 0, 0, 0.75);
           box-shadow: 8px 8px 24px -10px rgba(0, 0, 0, 0.75);
@@ -96,5 +96,10 @@ summary {
   margin-top: 50px !important;
   margin-bottom: 50px !important;
   width: 100%;
+}
+
+.error {
+  border: 1px solid red;
+  border-radius: 3px;
 }
 /*# sourceMappingURL=App.css.map */
