@@ -41,26 +41,16 @@ class App extends Component {
 			this.setState({
 				result: this.redirectUrls(this.state.urlsFrom, this.state.urlsTo)
 			});
-		} else {
+		} else if(this.state.urlsFrom.length > this.state.urlsTo.length) {
 			this.setState({
-				result: 'Błąd: Nieprawidłowa ilość przekierowań, czegoś tutaj brakuje.'
-			});
-			// alert(this.findDeselectedItem(this.urlsFrom, this.urlsTo));
-		}
+				result: 'Błąd: Nieprawidłowa ilość przekierowań.\n Za mało przekierowań w prawym polu:   > Przekieruj na <'
+      });
+		} else if(this.state.urlsFrom.length < this.state.urlsTo.length){
+      this.setState({
+				result: 'Błąd: Nieprawidłowa ilość przekierowań.\n Za mało przekierowań w lewym polu:   > Przekieruj z <'
+      });
+    }
 	};
-
-	// findDeselectedItem(urlsFrom, urlsTo) {
-	// 	urlsTo = this.urlsTo.length;
-	// 	urlsFrom = this.urlsFrom.length;
-
-	// 	// loop through previous array
-	// 	for (var j = 0; j < urlsFrom; j++) {
-	// 		// look for same thing in new array
-	// 		if (urlsTo.indexOf(urlsFrom[j]) == -1) return urlsFrom[j];
-	// 	}
-
-	// 	return null;
-	// }
 
 	copyToClipboard = (e) => {
 		this.textArea.select();
