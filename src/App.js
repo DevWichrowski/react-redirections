@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles/app/App.css';
+import Footer from './components/footer/Footer';
 
 class App extends Component {
 	constructor(props) {
@@ -133,6 +134,7 @@ class App extends Component {
 						readOnly={true}
 					/>
 				</div>
+        <Footer />
 			</div>
 		);
 	}
