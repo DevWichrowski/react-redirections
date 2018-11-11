@@ -6,7 +6,7 @@ import './Footer.css';
 		<div className="phantom">
 			<div className="style">
 				<p>
-					Created by <a href="https://github.com/DevWichrowski">DevWichrowski</a>
+					@Copyrights <a href="https://github.com/DevWichrowski">DevWichrowski</a>
 				</p>
 			</div>
 		</div>
