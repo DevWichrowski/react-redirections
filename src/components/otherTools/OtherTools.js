@@ -15,7 +15,7 @@ export default class OtherTools extends Component {
 				<div className="element">
         <p>lorem ipsum</p>
 					<div className="inputs">
-          <input type="text" class="form-control"/>
+          <input type="text" class="form-control" placeholder=""/>
           <input type="text" class="form-control"/>
 					</div>
 					<button id="result-textarea" className="btn btn-danger">
