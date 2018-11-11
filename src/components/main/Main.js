@@ -39,7 +39,7 @@ class Main extends Component {
 	};
 
 	generateUrl = () => {
-		if (this.state.urlsFrom.length == this.state.urlsTo.length) {
+		if (this.state.urlsFrom.length === this.state.urlsTo.length) {
 			this.setState({
 				result: this.redirectUrls(this.state.urlsFrom, this.state.urlsTo),
 				errorLeft: false,
@@ -57,7 +57,7 @@ class Main extends Component {
 					id="left-textarea"
 					className="form-control"
 					onChange={this.changeUrlFrom}
-					style="fontSize: 100px"
+					style={{ fontSize: '100px' }}
 				/>
 			);
 		} else if (this.state.urlsFrom.length < this.state.urlsTo.length) {
