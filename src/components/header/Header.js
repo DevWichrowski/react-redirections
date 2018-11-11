@@ -1,5 +1,5 @@
 import React from 'react';
-import './header.css';
+import './Header.css';
 
 const Header = () => {
 	return (
@@ -12,8 +12,8 @@ const Header = () => {
     </span>
   </a>
       <span className='buttons-flex'>
-      <a href="https://github.com/DevWichrowski"><button type="button" className="btn btn-info">Przekierowania 301</button><span className="sr-only">(current)</span></a>
-      <a href="https://github.com/DevWichrowski"><button type="button" className="btn btn-info">Inne przekierowania</button></a>
+      <a href="/"><button type="button" className="btn btn-info">Przekierowania 301</button><span className="sr-only">(current)</span></a>
+      <a href="/narzedzia"><button type="button" className="btn btn-info">Inne przekierowania</button></a>
       </span>
 </nav>
 		</div>
