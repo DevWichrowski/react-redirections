@@ -13,7 +13,7 @@ class App extends Component {
 				<Header />
 				<BrowserRouter>
 					<div>
-						<Route path="/" component={Main} exact />
+						<Route exact path="/" component={Main} />
 						<Route path="/narzedzia" component={OtherTools} />
 					</div>
 				</BrowserRouter>
