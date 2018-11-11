@@ -1,22 +1,24 @@
 .logo-text {
-    font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
-a:visited {
-    color: black;
+.header {
+	a:visited {
+		color: black;
+	}
 }
 
 .navbar {
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
-.buttons-flex{
-    display: flex;
-    flex-direction: row;
+.buttons-flex {
+	display: flex;
+	flex-direction: row;
 }
 
-.btn-info{
-    background-color: green;
-    margin-right: 20px;
+.btn-info {
+	background-color: green;
+	margin-right: 20px;
 }

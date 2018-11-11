@@ -13,7 +13,7 @@ const Header = () => {
   </a>
       <span className='buttons-flex'>
       <a href="https://github.com/DevWichrowski"><button type="button" className="btn btn-info">Przekierowania 301</button><span className="sr-only">(current)</span></a>
-      <a href="https://github.com/DevWichrowski"><button type="button" className="btn btn-info">Inne</button></a>
+      <a href="https://github.com/DevWichrowski"><button type="button" className="btn btn-info">Inne przekierowania</button></a>
       </span>
 </nav>
 		</div>
