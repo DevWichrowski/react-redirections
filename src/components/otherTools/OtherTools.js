@@ -10,6 +10,8 @@ export default class OtherTools extends Component {
 			resultNonWWW: '',
 			toWWW: '',
 			resultToWWW: '',
+			toHttps: '',
+			resultToHttps: '',
 			noIndexPhp: '',
 			resultNoIndexPhp: ''
 		};
@@ -23,6 +25,11 @@ export default class OtherTools extends Component {
 	saveToWWW = (event) => {
 		this.setState({ toWWW: event.target.value });
 		console.log('toWWW: ' + this.state.toWWW);
+	};
+
+	saveToHttps = (event) => {
+		this.setState({ toHttps: event.target.value });
+		console.log('ToHttps: ' + this.state.toHttps);
 	};
 
 	// saveNoIndexPhp = (event) => {
@@ -42,12 +49,22 @@ export default class OtherTools extends Component {
 		return result;
 	};
 
+	createToHttpsRedirection = (urlToRedirect) => {
+		let result = `RewriteCond %{SERVER_PORT} 80\n`;
+		result += `RewriteRule ^(.*)$ https://${urlToRedirect}`;
+		return result;
+	};
+
 	generateNonWWWRedirection = () => {
 		this.setState({ resultNonWWW: this.createNonWWWRedirection(this.state.nonWWW) });
 	};
 
 	generateToWWWRedirection = () => {
-		this.setState({ resultToWWW: this.createNonWWWRedirection(this.state.toWWW) });
+		this.setState({ resultToWWW: this.createToWWWRedirection(this.state.toWWW) });
+	};
+
+	generateToHttpsRedirection = () => {
+		this.setState({ resultToHttps: this.createToHttpsRedirection(this.state.toHttps) });
 	};
 
 	render() {
@@ -66,6 +83,12 @@ export default class OtherTools extends Component {
 					saveUrl={this.saveToWWW}
 					generateRedirection={this.generateToWWWRedirection}
 					resultRedirection={this.state.resultToWWW}
+				/>
+				<OtherRedirections
+					description={'Generuj regułe przekierowania na https - proszę podać adres bez www i http/https'}
+					saveUrl={this.saveToHttps}
+					generateRedirection={this.generateToHttpsRedirection}
+					resultRedirection={this.state.resultToHttps}
 				/>
 				<OtherRedirections
 					saveUrl={this.saveNoIndexPhp}
