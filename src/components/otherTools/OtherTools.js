@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './OtherTools.css';
+import OtherRedirections from '../otherRedirection/OtherRedirections';
 
 export default class OtherTools extends Component {
 	constructor(props) {
@@ -12,36 +12,9 @@ export default class OtherTools extends Component {
 			<div className="page-body">
 				<h1 className="h1-tools">Other Tools</h1>
 				<hr />
-				<div className="element">
-        <p>lorem ipsum</p>
-					<div className="inputs">
-          <input type="text" class="form-control" placeholder=""/>
-          <input type="text" class="form-control"/>
-					</div>
-					<button id="result-textarea" className="btn btn-danger">
-					Generuj
-				</button>
-				</div>
-				<div className="element">
-        <p>lorem ipsum</p>
-					<div className="inputs">
-          <input type="text" class="form-control"/>
-          <input type="text" class="form-control"/>
-					</div>
-					<button id="result-textarea" className="btn btn-danger">
-					Generuj
-				</button>
-				</div>
-				<div className="element">
-        <p>lorem ipsum</p>
-					<div className="inputs">
-          <input type="text" class="form-control"/>
-          <input type="text" class="form-control"/>
-					</div>
-          <button id="result-textarea" className="btn btn-danger">
-					Generuj
-				</button>
-				</div>
+				<OtherRedirections description={'Generuj regułe z www na bez www'} />
+				<OtherRedirections description={'Generuj regułe z bez www na www'} />
+				<OtherRedirections description={'Generuj regułe przekierowująca /index.php na /'} />
 			</div>
 		);
 	}

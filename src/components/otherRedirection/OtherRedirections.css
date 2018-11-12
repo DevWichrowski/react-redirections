@@ -1,0 +1,62 @@
+.h1-tools {
+  margin-top: 50px;
+  text-align: center !important;
+}
+
+.element {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50%;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.inputs input {
+  width: 50%;
+  border-radius: 3px;
+}
+
+.inputs input:first-child {
+  margin-right: 10px;
+}
+
+.generate {
+  width: 100%;
+  margin-top: 10px;
+  background-color: #28A745;
+  color: white;
+}
+
+.btn-danger {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #28A745;
+  color: white;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #259e41;
+}
+/*# sourceMappingURL=OtherRedirections.css.map */
