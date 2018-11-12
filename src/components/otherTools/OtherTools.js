@@ -32,11 +32,6 @@ export default class OtherTools extends Component {
 		console.log('ToHttps: ' + this.state.toHttps);
 	};
 
-	// saveNoIndexPhp = (event) => {
-	// 	this.setState({ noIndexPhp: event.target.value });
-	// 	console.log('NoIndexPHP: ' + this.state.noIndexPhp);
-	// };
-
 	createNonWWWRedirection = (urlToRedirect) => {
 		let result = `RewriteCond %{HTTP_HOST} ^${urlToRedirect}$ [NC]\n`;
 		result += `RewriteRule ^(.*)$ http://${urlToRedirect}/$1 [R=301,L]`;
@@ -70,7 +65,7 @@ export default class OtherTools extends Component {
 	render() {
 		return (
 			<div className="page-body">
-				<h1 className="h1-tools">Other Tools</h1>
+				<h1 className="h1-tools">Inne reguły przekierowań</h1>
 				<hr />
 				<OtherRedirections
 					description={'Generuj regułe z www na bez www - proszę podać adres bez www i http/https'}
@@ -89,10 +84,6 @@ export default class OtherTools extends Component {
 					saveUrl={this.saveToHttps}
 					generateRedirection={this.generateToHttpsRedirection}
 					resultRedirection={this.state.resultToHttps}
-				/>
-				<OtherRedirections
-					saveUrl={this.saveNoIndexPhp}
-					description={'Generuj regułe przekierowująca /index.php na /'}
 				/>
 			</div>
 		);
