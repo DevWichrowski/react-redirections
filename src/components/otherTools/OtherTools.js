@@ -12,8 +12,8 @@ export default class OtherTools extends Component {
 			resultToWWW: '',
 			toHttps: '',
 			resultToHttps: '',
-			noIndexPhp: '',
-			resultNoIndexPhp: ''
+			toHttp: '',
+			resultHttp: ''
 		};
 	}
 
@@ -32,9 +32,14 @@ export default class OtherTools extends Component {
 		console.log('ToHttps: ' + this.state.toHttps);
 	};
 
+	saveToHttp = (event) => {
+		this.setState({ toHttp: event.target.value });
+		console.log('ToHttps: ' + this.state.toHttp);
+	};
+
 	createNonWWWRedirection = (urlToRedirect) => {
 		let result = `RewriteCond %{HTTP_HOST} ^${urlToRedirect}$ [NC]\n`;
-		result += `RewriteRule ^(.*)$ http://${urlToRedirect}/$1 [R=301,L]`;
+		result += `RewriteRule ^(.*)$ http://${urlToRedirect}%{REQUEST_URI} [R=301,L]`;
 		return result;
 	};
 
@@ -45,8 +50,14 @@ export default class OtherTools extends Component {
 	};
 
 	createToHttpsRedirection = (urlToRedirect) => {
-		let result = `RewriteCond %{SERVER_PORT} 80\n`;
-		result += `RewriteRule ^(.*)$ https://${urlToRedirect}`;
+		let result = `RewriteCond %{HTTPS} !=on\n`;
+		result += `RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`;
+		return result;
+	};
+
+	createToHttpRedirection = (urlToRedirect) => {
+		let result = `RewriteCond %{HTTPS}=on\n`;
+		result += `RewriteRule ^(.*)$ http://${urlToRedirect}/$1 [R=301,L]`;
 		return result;
 	};
 
@@ -62,28 +73,42 @@ export default class OtherTools extends Component {
 		this.setState({ resultToHttps: this.createToHttpsRedirection(this.state.toHttps) });
 	};
 
+	generateToHttpRedirection = () => {
+		this.setState({ resultToHttp: this.createToHttpsRedirection(this.state.toHttp) });
+	};
+
 	render() {
 		return (
 			<div className="page-body">
 				<h1 className="h1-tools">Inne reguły przekierowań</h1>
 				<hr />
 				<OtherRedirections
-					description={'Generuj regułe z www na bez www - proszę podać adres bez www i http/https'}
+					description={'Generuj regułe z www -> bez www - proszę podać adres bez www i http/https'}
 					saveUrl={this.saveNonWWW}
 					generateRedirection={this.generateNonWWWRedirection}
 					resultRedirection={this.state.resultNonWWW}
 				/>
 				<OtherRedirections
-					description={'Generuj regułe z bez www na www - proszę podać adres bez www i http/https'}
+					description={'Generuj regułe z bez www -> www - proszę podać adres bez www i http/https'}
 					saveUrl={this.saveToWWW}
 					generateRedirection={this.generateToWWWRedirection}
 					resultRedirection={this.state.resultToWWW}
 				/>
 				<OtherRedirections
-					description={'Generuj regułe przekierowania na https - proszę podać adres bez www i http/https'}
+					description={
+						'Generuj regułe przekierowania z http -> https - proszę podać adres bez www i http/https'
+					}
 					saveUrl={this.saveToHttps}
 					generateRedirection={this.generateToHttpsRedirection}
 					resultRedirection={this.state.resultToHttps}
+				/>
+				<OtherRedirections
+					description={
+						'Generuj regułe przekierowania z https -> http - proszę podać adres bez www i http/https'
+					}
+					saveUrl={this.saveToHttp}
+					generateRedirection={this.generateToHttpRedirection}
+					resultRedirection={this.state.resultToHttp}
 				/>
 			</div>
 		);
