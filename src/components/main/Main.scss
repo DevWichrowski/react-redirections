@@ -62,7 +62,6 @@ summary {
 .textarea-container {
   width: 49%;
   height: 200px;
-  // margin: 30px;
 
   textarea {
     width: 100%;
@@ -92,4 +91,20 @@ summary {
   @extend .form-control;
   border: 1px solid rgb(255, 0, 0);
   border-radius: 3px;
+}
+
+.label-separator {
+  margin-right: 10px!important;
+}
+
+.chosen-separator {
+  text-align: center;
+  width: 30px;
+  border-radius: 3px;
+  border: 1px green solid;
+}
+
+.separator-container{
+  position: relative;
+  top: 2.5vw;
 }

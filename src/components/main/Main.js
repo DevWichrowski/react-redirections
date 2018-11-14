@@ -11,7 +11,8 @@ class Main extends Component {
 			result: '',
 			copySuccess: '',
 			errorLeft: false,
-			errorRight: false
+			errorRight: false,
+			separator: '\n'
 		};
 	}
 
@@ -23,8 +24,13 @@ class Main extends Component {
 		this.setState({ urlsTo: this.parseStringToArray(event.target.value) });
 	};
 
+	setSeparator = (event) => {
+		this.setState({ separator: event.target.value });
+		console.log(this.state.separator);
+	};
+
 	parseStringToArray = (urlString) => {
-		return urlString.split('\n');
+		return urlString.split(this.state.separator);
 	};
 
 	redirectUrls = (urlsFrom, urlsTo) => {
@@ -32,8 +38,8 @@ class Main extends Component {
 
 		urlsFrom.map((item, index) => {
 			result += `RewriteRule ^${item}$ ^${urlsTo[index]}$ [R=301,L]\n`;
+			return true;
 		});
-
 		return result;
 	};
 
@@ -116,14 +122,24 @@ class Main extends Component {
 						/>
 					</div>
 				</div>
-				<button id="result-textarea" className="center-item btn btn-success" onClick={this.generateUrl}>
-					Generuj
-				</button>
+
 				<div>
+					<div className="separator-container">
+						<label htmlFor="separator" className="label-separator">
+							Wybierz separator - domyślnie ustawiony jest <strong>enter</strong>:
+						</label>
+						<input id="separator" className="chosen-separator" onChange={this.setSeparator} />
+					</div>
+					<button id="result-textarea" className="center-item btn btn-success" onClick={this.generateUrl}>
+						Generuj
+					</button>
+				</div>
+				<div className="button-container">
 					<label htmlFor="result-textarea">Wygenerowane przekierowania:</label>
 					<button type="button" className="btn btn-light push-right" onClick={this.copyToClipboard}>
 						Kopiuj
 					</button>
+
 					<p className="push-right">{this.state.copySuccess}</p>
 					<textarea
 						ref={(textarea) => (this.textArea = textarea)}
