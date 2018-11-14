@@ -28,7 +28,6 @@ class Main extends Component {
 	};
 
 	redirectUrls = (urlsFrom, urlsTo) => {
-		const len = urlsFrom.length;
 		let result = '';
 
 		urlsFrom.map((item, index) => {
