@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import OtherRedirections from '../otherRedirection/OtherRedirections';
+import './OtherTools.css';
 
 export default class OtherTools extends Component {
 	constructor(props) {
@@ -82,34 +83,71 @@ export default class OtherTools extends Component {
 			<div className="page-body">
 				<h1 className="h1-tools">Inne reguły przekierowań</h1>
 				<hr />
-				<OtherRedirections
-					description={'Generuj regułe z www -> bez www - proszę podać adres bez www i http/https'}
-					saveUrl={this.saveNonWWW}
-					generateRedirection={this.generateNonWWWRedirection}
-					resultRedirection={this.state.resultNonWWW}
-				/>
-				<OtherRedirections
-					description={'Generuj regułe z bez www -> www - proszę podać adres bez www i http/https'}
-					saveUrl={this.saveToWWW}
-					generateRedirection={this.generateToWWWRedirection}
-					resultRedirection={this.state.resultToWWW}
-				/>
-				<OtherRedirections
-					description={
-						'Generuj regułe przekierowania z http -> https - proszę podać adres bez www i http/https'
-					}
-					saveUrl={this.saveToHttps}
-					generateRedirection={this.generateToHttpsRedirection}
-					resultRedirection={this.state.resultToHttps}
-				/>
-				<OtherRedirections
-					description={
-						'Generuj regułe przekierowania z https -> http - proszę podać adres bez www i http/https'
-					}
-					saveUrl={this.saveToHttp}
-					generateRedirection={this.generateToHttpRedirection}
-					resultRedirection={this.state.resultToHttp}
-				/>
+				<div className="summary-item">
+					<button
+						className="btn btn-secondary"
+						type="button"
+						data-toggle="collapse"
+						data-target="#collapsewww-nonwww"
+						aria-expanded="false"
+						aria-controls="collapsewww-nonwww"
+					>
+						Reguły przekierowan www i non-www
+					</button>
+					<div className="collapse" id="collapsewww-nonwww">
+						<div className="card card-body">
+							<OtherRedirections
+								description={
+									'Generuj regułe z www -> bez www - proszę podać adres bez www i http/https'
+								}
+								saveUrl={this.saveNonWWW}
+								generateRedirection={this.generateNonWWWRedirection}
+								resultRedirection={this.state.resultNonWWW}
+							/>
+							<OtherRedirections
+								description={
+									'Generuj regułe z bez www -> www - proszę podać adres bez www i http/https'
+								}
+								saveUrl={this.saveToWWW}
+								generateRedirection={this.generateToWWWRedirection}
+								resultRedirection={this.state.resultToWWW}
+							/>
+						</div>
+					</div>
+				</div>
+
+				<div className="summary-item">
+					<button
+						className="btn btn-secondary"
+						type="button"
+						data-toggle="collapse"
+						data-target="#collapsehttp-https"
+						aria-expanded="false"
+						aria-controls="collapsehttp-https"
+					>
+						Przekierowania http - https
+					</button>
+					<div className="collapse" id="collapsehttp-https">
+						<div className="card card-body">
+							<OtherRedirections
+								description={
+									'Generuj regułe przekierowania z http -> https - proszę podać adres bez www i http/https'
+								}
+								saveUrl={this.saveToHttps}
+								generateRedirection={this.generateToHttpsRedirection}
+								resultRedirection={this.state.resultToHttps}
+							/>
+							<OtherRedirections
+								description={
+									'Generuj regułe przekierowania z https -> http - proszę podać adres bez www i http/https'
+								}
+								saveUrl={this.saveToHttp}
+								generateRedirection={this.generateToHttpRedirection}
+								resultRedirection={this.state.resultToHttp}
+							/>
+						</div>
+					</div>
+				</div>
 			</div>
 		);
 	}

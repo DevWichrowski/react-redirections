@@ -1,1 +1,23 @@
-/* No CSS *//*# sourceMappingURL=OtherTools.css.map */
+.summary-item {
+  outline: none;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.summary-item .btn-secondary {
+  margin-left: 25%;
+  width: 50%;
+  height: 35px;
+  border: 0;
+  background-color: #3b88fc;
+}
+
+.summary-item .card-body {
+  background-color: #d7dad7;
+  width: 90%;
+  margin-left: 5%;
+  border-radius: 3px;
+  -webkit-box-shadow: 8px 9px 5px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: 8px 9px 5px -6px rgba(0, 0, 0, 0.75);
+}
+/*# sourceMappingURL=OtherTools.css.map */
