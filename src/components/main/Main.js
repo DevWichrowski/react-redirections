@@ -92,18 +92,34 @@ class Main extends Component {
 			<div className="wrapper">
 				<h1>Rewind 301 redirections</h1>
 				<hr />
-				<details id="summary-details">
-					<summary>Jak tego używać?</summary>
-					<p>
-						Wystarczy że w <strong>lewym</strong> polu tekstowym wkleisz adresy do przekierowania, a w{' '}
-						<strong>prawym</strong> polu na co mają być przekierowane
-					</p>
-					<p>W polu poniżej wygenerują się reguły gotowe do wklejenia w plik .htaccess </p>
-					<p>
-						{' '}
-						Możesz skopiować wygenerowane przekierowania za pomoca przycisku <strong>Kopiuj!</strong>
-					</p>
-				</details>
+				<div className="summary">
+					<button
+						className="btn btn-secondary"
+						type="button"
+						data-toggle="collapse"
+						data-target="#collapseExample"
+						aria-expanded="false"
+						aria-controls="collapseExample"
+					>
+						Jak to działa?
+					</button>
+					<div className="collapse" id="collapseExample">
+						<div className="card card-body">
+							<p>
+								Wystarczy że w <strong>lewym</strong> polu tekstowym wkleisz adresy do przekierowania, a
+								w <strong>prawym</strong> polu na co mają być przekierowane
+							</p>
+							<p>W polu poniżej wygenerują się reguły gotowe do wklejenia w plik .htaccess </p>
+							<p>Możesz także wybrać swój <strong>separator</strong>, domyślnie aplikacja korzysta z separatora Enter, lecz możesz zmienić na jaki jest ci potrzebny.</p>
+							<p>
+								{' '}
+								Możesz skopiować wygenerowane przekierowania za pomoca przycisku{' '}
+								<strong>Kopiuj!</strong>
+							</p>
+						</div>
+					</div>
+				</div>
+
 				<div className="redirects">
 					<div className="textarea-container">
 						<label htmlFor="left-textarea">Przekieruj z:</label>
