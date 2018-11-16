@@ -18,25 +18,9 @@ export default class OtherTools extends Component {
 		};
 	}
 
-	saveNonWWW = (event) => {
-		this.setState({ nonWWW: event.target.value });
-		console.log('NonWWW: ' + this.state.nonWWW);
-	};
-
-	saveToWWW = (event) => {
-		this.setState({ toWWW: event.target.value });
-		console.log('toWWW: ' + this.state.toWWW);
-	};
-
-	saveToHttps = (event) => {
-		this.setState({ toHttps: event.target.value });
-		console.log('ToHttps: ' + this.state.toHttps);
-	};
-
-	saveToHttp = (event) => {
-		this.setState({ toHttp: event.target.value });
-		console.log('ToHttps: ' + this.state.toHttp);
-	};
+	saveUrls = (event, url) => {
+		this.setState({ [url]: event.target.value });
+	}
 
 	createNonWWWRedirection = (urlToRedirect) => {
 		let result = `RewriteCond %{HTTP_HOST} ^${urlToRedirect}$ [NC]\n`;
@@ -63,23 +47,20 @@ export default class OtherTools extends Component {
 	};
 
 	generateNonWWWRedirection = () => {
-		if(this.state.nonWWW !== '')
-		this.setState({ resultNonWWW: this.createNonWWWRedirection(this.state.nonWWW) });
+		if (this.state.nonWWW !== '') this.setState({ resultNonWWW: this.createNonWWWRedirection(this.state.nonWWW) });
 	};
 
 	generateToWWWRedirection = () => {
-		if(this.state.toWWW !== '')
-		this.setState({ resultToWWW: this.createToWWWRedirection(this.state.toWWW) });
+		if (this.state.toWWW !== '') this.setState({ resultToWWW: this.createToWWWRedirection(this.state.toWWW) });
 	};
 
 	generateToHttpsRedirection = () => {
-		if(this.state.toHttps !== '')
-		this.setState({ resultToHttps: this.createToHttpsRedirection(this.state.toHttps) });
+		if (this.state.toHttps !== '')
+			this.setState({ resultToHttps: this.createToHttpsRedirection(this.state.toHttps) });
 	};
 
 	generateToHttpRedirection = () => {
-		if(this.state.toHttp !== '')
-		this.setState({ resultToHttp: this.createToHttpsRedirection(this.state.toHttp) });
+		if (this.state.toHttp !== '') this.setState({ resultToHttp: this.createToHttpsRedirection(this.state.toHttp) });
 	};
 
 	render() {
@@ -87,34 +68,34 @@ export default class OtherTools extends Component {
 			<div className="page-body">
 				<h1 className="h1-tools">Inne reguły przekierowań</h1>
 				<hr />
-					<div className="summary-index-php">
-						<button
-							className="btn btn-danger"
-							type="button"
-							data-toggle="collapse"
-							data-target="#collapseExample"
-							aria-expanded="false"
-							aria-controls="collapseExample"
-						>
-							Przekierowanie z index.php
-						</button>
-						<div className="collapse" id="collapseExample">
-							<div className="card card-body">
-								<p>RewriteCond % {'{THE_REQUEST}'} ^.*/index\.php </p>
-								<p>RewriteRule ^(.*)index.php$ /$1 [R=301,L]</p>
-							</div>
+				<div className="summary-index-php">
+					<button
+						className="btn btn-danger"
+						type="button"
+						data-toggle="collapse"
+						data-target="#collapseExample"
+						aria-expanded="false"
+						aria-controls="collapseExample"
+					>
+						Przekierowanie z index.php
+					</button>
+					<div className="collapse" id="collapseExample">
+						<div className="card card-body">
+							<p>RewriteCond % {'{THE_REQUEST}'} ^.*/index\.php </p>
+							<p>RewriteRule ^(.*)index.php$ /$1 [R=301,L]</p>
 						</div>
 					</div>
+				</div>
 				<div className="shadow-box">
 					<OtherRedirections
 						description={'Generuj regułe z www -> bez www - proszę podać adres bez www i http/https'}
-						saveUrl={this.saveNonWWW}
+						saveUrl={(event) => this.saveUrls(event,'nonWWW')}
 						generateRedirection={this.generateNonWWWRedirection}
 						resultRedirection={this.state.resultNonWWW}
 					/>
 					<OtherRedirections
 						description={'Generuj regułe z bez www -> www - proszę podać adres bez www i http/https'}
-						saveUrl={this.saveToWWW}
+						saveUrl={(event) => this.saveUrls(event,'toWWW')}
 						generateRedirection={this.generateToWWWRedirection}
 						resultRedirection={this.state.resultToWWW}
 					/>
@@ -124,7 +105,7 @@ export default class OtherTools extends Component {
 						description={
 							'Generuj regułe przekierowania z http -> https - proszę podać adres bez www i http/https'
 						}
-						saveUrl={this.saveToHttps}
+						saveUrl={(event) => this.saveUrls(event,'toHttps')}
 						generateRedirection={this.generateToHttpsRedirection}
 						resultRedirection={this.state.resultToHttps}
 					/>
@@ -132,7 +113,7 @@ export default class OtherTools extends Component {
 						description={
 							'Generuj regułe przekierowania z https -> http - proszę podać adres bez www i http/https'
 						}
-						saveUrl={this.saveToHttp}
+						saveUrl={(event) => this.saveUrls(event,'toHttp')}
 						generateRedirection={this.generateToHttpRedirection}
 						resultRedirection={this.state.resultToHttp}
 					/>
