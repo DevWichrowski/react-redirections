@@ -38,30 +38,26 @@ export default class OtherTools extends Component {
 				result += `RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`;
 				break;
 			case 'toHttp':
-			result = `RewriteCond %{HTTPS}=on\n`;
-		result += `RewriteRule ^(.*)$ http://${urlToRedirect}/$1 [R=301,L]`;
-		break
-
+				result = `RewriteCond %{HTTPS}=on\n`;
+				result += `RewriteRule ^(.*)$ http://${urlToRedirect}/$1 [R=301,L]`;
+				break;
 		}
 		return result;
 	};
 
-	generateNonWWWRedirection = () => {
-		if (this.state.nonWWW !== '')
-			this.setState({ resultNonWWW: this.createRedirection(this.state.nonWWW, 'nonWWW') });
-	};
-
-	generateToWWWRedirection = () => {
-		if (this.state.toWWW !== '') this.setState({ resultToWWW: this.createRedirection(this.state.toWWW, 'toWWW') });
-	};
-
-	generateToHttpsRedirection = () => {
-		if (this.state.toHttps !== '')
-			this.setState({ resultToHttps: this.createRedirection(this.state.toHttps, 'toHttps') });
-	};
-
-	generateToHttpRedirection = () => {
-		if (this.state.toHttp !== '') this.setState({ resultToHttp: this.createRedirection(this.state.toHttp, 'toHttp') });
+	generateRedirection = (url) => {
+		if (url === 'nonWWW') {
+			if (this.state.nonWWW !== '')
+				this.setState({ resultNonWWW: this.createRedirection(this.state.nonWWW, url) });
+		} else if (url === 'toWWW') {
+			if (this.state.toWWW !== '') this.setState({ resultToWWW: this.createRedirection(this.state.toWWW, url) });
+		} else if (url === 'toHttps') {
+			if (this.state.toHttps !== '')
+				this.setState({ resultToHttps: this.createRedirection(this.state.toHttps, url) });
+		} else if (url === 'toHttp') {
+			if (this.state.toHttp !== '')
+				this.setState({ resultToHttp: this.createRedirection(this.state.toHttp, url) });
+		}
 	};
 
 	render() {
@@ -91,13 +87,13 @@ export default class OtherTools extends Component {
 					<OtherRedirections
 						description={'Generuj regułe z www -> bez www - proszę podać adres bez www i http/https'}
 						saveUrl={(event) => this.saveUrls(event, 'nonWWW')}
-						generateRedirection={this.generateNonWWWRedirection}
+						generateRedirection={() => this.generateRedirection('nonWWW')}
 						resultRedirection={this.state.resultNonWWW}
 					/>
 					<OtherRedirections
 						description={'Generuj regułe z bez www -> www - proszę podać adres bez www i http/https'}
 						saveUrl={(event) => this.saveUrls(event, 'toWWW')}
-						generateRedirection={this.generateToWWWRedirection}
+						generateRedirection={() => this.generateRedirection('toWWW')}
 						resultRedirection={this.state.resultToWWW}
 					/>
 				</div>
@@ -107,7 +103,7 @@ export default class OtherTools extends Component {
 							'Generuj regułe przekierowania z http -> https - proszę podać adres bez www i http/https'
 						}
 						saveUrl={(event) => this.saveUrls(event, 'toHttps')}
-						generateRedirection={this.generateToHttpsRedirection}
+						generateRedirection={() => this.generateRedirection('toHttps')}
 						resultRedirection={this.state.resultToHttps}
 					/>
 					<OtherRedirections
@@ -115,7 +111,7 @@ export default class OtherTools extends Component {
 							'Generuj regułe przekierowania z https -> http - proszę podać adres bez www i http/https'
 						}
 						saveUrl={(event) => this.saveUrls(event, 'toHttp')}
-						generateRedirection={this.generateToHttpRedirection}
+						generateRedirection={() => this.generateRedirection('toHttp')}
 						resultRedirection={this.state.resultToHttp}
 					/>
 				</div>
