@@ -8,7 +8,7 @@ hr {
 }
 
 .wrapper {
-  margin: 100px auto;
+  margin: 50px auto 100px auto;
   width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -44,8 +44,16 @@ hr {
   display: block;
 }
 
-summary {
+.summary {
   outline: none;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.summary .btn-secondary {
+  width: 100%;
+  height: 35px;
+  border: 0;
 }
 
 .redirects {
@@ -101,5 +109,21 @@ summary {
 .error {
   border: 1px solid red;
   border-radius: 3px;
+}
+
+.label-separator {
+  margin-right: 10px !important;
+}
+
+.chosen-separator {
+  text-align: center;
+  width: 30px;
+  border-radius: 3px;
+  border: 1px green solid;
+}
+
+.separator-container {
+  position: relative;
+  top: 2.5vw;
 }
 /*# sourceMappingURL=Main.css.map */

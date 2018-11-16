@@ -1,0 +1,31 @@
+.logo-text {
+	font-size: 1.5rem;
+}
+
+.header {
+	a:visited {
+		color: black;
+	}
+}
+
+.navbar {
+	display: flex;
+    flex-direction: row;
+}
+
+.buttons-flex {
+	display: flex;
+	flex-direction: row;
+}
+
+.btn-info {
+	background-color: #28A745;
+    border-color: #28A745;
+	margin-right: 20px;
+}
+
+.btn-info:hover {
+	background-color: #259e41;;
+    border-color: #28A745;;
+	margin-right: 20px;
+}
