@@ -1,23 +1,11 @@
-.summary-item {
-	outline: none;
-	margin-bottom: 20px;
-	width: 100%;
+.shadow-box{
+	border: 1px solid black;
+	width: 80%;
+	margin: 10px auto;
+	border-radius: 3px;
+	border-color: green;
 
-	.btn-secondary {
-		margin-left: 25%;
-		width: 50%;
-		height: 35px;
-		border: 0;
-		background-color: #3b88fc;
-	}
-
-	.card-body {
-		background-color: #d7dad7;
-		width: 90%;
-    margin-left: 5%;
-    border-radius: 3px;
-		-webkit-box-shadow: 8px 9px 5px -6px rgba(0, 0, 0, 0.75);
-		-moz-box-shadow: 8px 9px 5px -6px rgba(0, 0, 0, 0.75);
-		box-shadow: 8px 9px 5px -6px rgba(0, 0, 0, 0.75);
-	}
+	-webkit-box-shadow: 8px 8px 24px -10px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 8px 8px 24px -10px rgba(0, 0, 0, 0.75);
+	box-shadow: 8px 8px 24px -10px rgba(0, 0, 0, 0.75);
 }
