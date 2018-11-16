@@ -83,6 +83,24 @@ export default class OtherTools extends Component {
 			<div className="page-body">
 				<h1 className="h1-tools">Inne reguły przekierowań</h1>
 				<hr />
+					<div className="summary">
+						<button
+							className="btn btn-danger"
+							type="button"
+							data-toggle="collapse"
+							data-target="#collapseExample"
+							aria-expanded="false"
+							aria-controls="collapseExample"
+						>
+							Przekierowanie z index.php
+						</button>
+						<div className="collapse" id="collapseExample">
+							<div className="card card-body">
+								<p>RewriteCond % {'{THE_REQUEST}'} ^.*/index\.php </p>
+								<p>RewriteRule ^(.*)index.php$ /$1 [R=301,L]</p>
+							</div>
+						</div>
+					</div>
 				<div className="shadow-box">
 					<OtherRedirections
 						description={'Generuj regułe z www -> bez www - proszę podać adres bez www i http/https'}

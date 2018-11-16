@@ -1,10 +1,23 @@
 .shadow-box {
   border: 1px solid black;
   width: 80%;
-  margin: 10px auto;
+  margin: 30px auto;
   border-radius: 3px;
   border-color: green;
   -webkit-box-shadow: 8px 8px 24px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 8px 8px 24px -10px rgba(0, 0, 0, 0.75);
+}
+
+.summary {
+  width: 40%;
+  margin: 20px auto !important;
+}
+
+.summary .btn-secondary {
+  background-color: #259e41;
+}
+
+.summary .card-body {
+  text-align: center;
 }
 /*# sourceMappingURL=OtherTools.css.map */
