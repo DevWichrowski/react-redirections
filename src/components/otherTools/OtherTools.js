@@ -63,18 +63,22 @@ export default class OtherTools extends Component {
 	};
 
 	generateNonWWWRedirection = () => {
+		if(this.state.nonWWW !== '')
 		this.setState({ resultNonWWW: this.createNonWWWRedirection(this.state.nonWWW) });
 	};
 
 	generateToWWWRedirection = () => {
+		if(this.state.toWWW !== '')
 		this.setState({ resultToWWW: this.createToWWWRedirection(this.state.toWWW) });
 	};
 
 	generateToHttpsRedirection = () => {
+		if(this.state.toHttps !== '')
 		this.setState({ resultToHttps: this.createToHttpsRedirection(this.state.toHttps) });
 	};
 
 	generateToHttpRedirection = () => {
+		if(this.state.toHttp !== '')
 		this.setState({ resultToHttp: this.createToHttpsRedirection(this.state.toHttp) });
 	};
 
