@@ -83,7 +83,7 @@ export default class OtherTools extends Component {
 			<div className="page-body">
 				<h1 className="h1-tools">Inne reguły przekierowań</h1>
 				<hr />
-					<div className="summary">
+					<div className="summary-index-php">
 						<button
 							className="btn btn-danger"
 							type="button"
