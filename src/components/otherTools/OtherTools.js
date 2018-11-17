@@ -86,38 +86,34 @@ export default class OtherTools extends Component {
 						</div>
 					</div>
 				</div>
-				<div className="shadow-box">
-					<OtherRedirections
-						description={'Generuj regułe z www -> bez www - proszę podać adres bez www i http/https'}
-						saveUrl={(event) => this.saveUrls(event, 'nonWWW')}
-						generateRedirection={() => this.generateRedirection('nonWWW')}
-						resultRedirection={this.state.resultNonWWW}
-					/>
-					<OtherRedirections
-						description={'Generuj regułe z bez www -> www - proszę podać adres bez www i http/https'}
-						saveUrl={(event) => this.saveUrls(event, 'toWWW')}
-						generateRedirection={() => this.generateRedirection('toWWW')}
-						resultRedirection={this.state.resultToWWW}
-					/>
-				</div>
-				<div className="shadow-box">
-					<OtherRedirections
-						description={
-							'Generuj regułe przekierowania z http -> https - proszę podać adres bez www i http/https'
-						}
-						saveUrl={(event) => this.saveUrls(event, 'toHttps')}
-						generateRedirection={() => this.generateRedirection('toHttps')}
-						resultRedirection={this.state.resultToHttps}
-					/>
-					<OtherRedirections
-						description={
-							'Generuj regułe przekierowania z https -> http - proszę podać adres bez www i http/https'
-						}
-						saveUrl={(event) => this.saveUrls(event, 'toHttp')}
-						generateRedirection={() => this.generateRedirection('toHttp')}
-						resultRedirection={this.state.resultToHttp}
-					/>
-				</div>
+				<OtherRedirections
+					stateName="nonWWW"
+					description={'Przekierowanie z www -> bez www (podać bez http/s)'}
+					saveUrl={(event) => this.saveUrls(event, 'nonWWW')}
+					generateRedirection={() => this.generateRedirection('nonWWW')}
+					resultRedirection={this.state.resultNonWWW}
+				/>
+				<OtherRedirections
+					stateName="toWWW"
+					description={'Przekierowanie z bez www -> www (podać bez http/s)'}
+					saveUrl={(event) => this.saveUrls(event, 'toWWW')}
+					generateRedirection={() => this.generateRedirection('toWWW')}
+					resultRedirection={this.state.resultToWWW}
+				/>
+				<OtherRedirections
+					stateName="toHttps"
+					description={'Przekierowanie z http -> https (podać bez http/s)'}
+					saveUrl={(event) => this.saveUrls(event, 'toHttps')}
+					generateRedirection={() => this.generateRedirection('toHttps')}
+					resultRedirection={this.state.resultToHttps}
+				/>
+				<OtherRedirections
+					stateName="toHttp"
+					description={'Przekierowanie z https -> http (podać bez http/s)'}
+					saveUrl={(event) => this.saveUrls(event, 'toHttp')}
+					generateRedirection={() => this.generateRedirection('toHttp')}
+					resultRedirection={this.state.resultToHttp}
+				/>
 			</div>
 		);
 	}
