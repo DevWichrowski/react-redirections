@@ -10,10 +10,10 @@ a:visited {
   background-color: #218838;
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   left: 0;
   bottom: 0;
-  height: 70px;
+  height: 40px;
   width: 100%;
   position: fixed;
 }
