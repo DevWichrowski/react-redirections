@@ -20,4 +20,28 @@
 .summary-index-php .card-body {
   text-align: center;
 }
+
+@media screen and (max-width: 1100px) {
+  .page-body {
+    height: 100%;
+  }
+  .summary-index-php {
+    width: 90%;
+  }
+  .btn-danger {
+    height: 40%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .summary-index-php {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .summary-index-php {
+    width: 90%;
+  }
+}
 /*# sourceMappingURL=OtherTools.css.map */

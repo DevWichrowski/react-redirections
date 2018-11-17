@@ -126,4 +126,29 @@ hr {
   position: relative;
   top: 2.5vw;
 }
+
+@media screen and (max-width: 1100px) {
+  .wrapper {
+    width: 90%;
+  }
+  .separator-container {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .redirects {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .textarea-container {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+}
 /*# sourceMappingURL=Main.css.map */
