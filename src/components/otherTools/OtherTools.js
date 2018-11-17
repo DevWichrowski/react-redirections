@@ -84,7 +84,7 @@ export default class OtherTools extends Component {
 				/>
 				<NonGeneratedRedirection
 					stateName="toHttps"
-					description={'Przekierowanie z http -> https /'}
+					description={'Przekierowanie z http -> https'}
 					firstLine={`RewriteCond %{HTTPS} !=on\n`}
 					secondLine={`RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`}
 				/>
