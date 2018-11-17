@@ -41,6 +41,9 @@ export default class OtherTools extends Component {
 				result = `RewriteCond %{HTTPS}=on\n`;
 				result += `RewriteRule ^(.*)$ http://${urlToRedirect}/$1 [R=301,L]`;
 				break;
+			default:
+				result = 'Unknown url';
+				break;
 		}
 		return result;
 	};
