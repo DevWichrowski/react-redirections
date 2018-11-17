@@ -18,6 +18,7 @@ export default function OtherRedirections(props) {
 					</button>
 					<div className="collapse" id={props.stateName}>
 					<div className="card card-body">
+							<p>{props.info}</p>
 						<div className="inputs">
 							<textarea
 								type="text"

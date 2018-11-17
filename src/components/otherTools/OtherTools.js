@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import OtherRedirections from '../otherRedirection/OtherRedirections';
+import NonGeneratedRedirection from '../nonGeneratedRedirection/NonGeneratedRedirection';
 import './OtherTools.css';
 
 export default class OtherTools extends Component {
@@ -11,8 +12,6 @@ export default class OtherTools extends Component {
 			resultNonWWW: '',
 			toWWW: '',
 			resultToWWW: '',
-			toHttps: '',
-			resultToHttps: '',
 			toHttp: '',
 			resultHttp: ''
 		};
@@ -33,10 +32,6 @@ export default class OtherTools extends Component {
 				result = `RewriteCond %{HTTP_HOST} ^${urlToRedirect}$ [NC]\n`;
 				result += `RewriteRule ^(.*)$ http://${urlToRedirect}/$1 [R=301,NC]`;
 				break;
-			case 'toHttps':
-				result = `RewriteCond %{HTTPS} !=on\n`;
-				result += `RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`;
-				break;
 			case 'toHttp':
 				result = `RewriteCond %{HTTPS}=on\n`;
 				result += `RewriteRule ^(.*)$ http://${urlToRedirect}/$1 [R=301,L]`;
@@ -54,9 +49,6 @@ export default class OtherTools extends Component {
 				this.setState({ resultNonWWW: this.createRedirection(this.state.nonWWW, url) });
 		} else if (url === 'toWWW') {
 			if (this.state.toWWW !== '') this.setState({ resultToWWW: this.createRedirection(this.state.toWWW, url) });
-		} else if (url === 'toHttps') {
-			if (this.state.toHttps !== '')
-				this.setState({ resultToHttps: this.createRedirection(this.state.toHttps, url) });
 		} else if (url === 'toHttp') {
 			if (this.state.toHttp !== '')
 				this.setState({ resultToHttp: this.createRedirection(this.state.toHttp, url) });
@@ -68,48 +60,38 @@ export default class OtherTools extends Component {
 			<div className="page-body">
 				<h1 className="h1-tools">Inne reguły przekierowań</h1>
 				<hr />
-				<div className="summary-index-php">
-					<button
-						className="btn btn-danger"
-						type="button"
-						data-toggle="collapse"
-						data-target="#collapseExample"
-						aria-expanded="false"
-						aria-controls="collapseExample"
-					>
-						Przekierowanie z index.php
-					</button>
-					<div className="collapse" id="collapseExample">
-						<div className="card card-body">
-							<p>RewriteCond % {'{THE_REQUEST}'} ^.*/index\.php </p>
-							<p>RewriteRule ^(.*)index.php$ /$1 [R=301,L]</p>
-						</div>
-					</div>
-				</div>
+				<NonGeneratedRedirection
+					stateName="toIndexPhp"
+					description={'Przekierowanie z index.php na /'}
+					firstLine={`RewriteCond %{THE_REQUEST} ^.*/index\\.php`}
+					secondLine={`RewriteRule ^(.*)index.php$ /$1 [R=301,L]`}
+				/>
 				<OtherRedirections
 					stateName="nonWWW"
-					description={'Przekierowanie z www -> bez www (podać bez http/s)'}
+					info="Adres podać bez http/https"
+					description={'Przekierowanie z www -> bez www'}
 					saveUrl={(event) => this.saveUrls(event, 'nonWWW')}
 					generateRedirection={() => this.generateRedirection('nonWWW')}
 					resultRedirection={this.state.resultNonWWW}
 				/>
 				<OtherRedirections
 					stateName="toWWW"
-					description={'Przekierowanie z bez www -> www (podać bez http/s)'}
+					info="Adres podać bez http/https"
+					description={'Przekierowanie z bez www -> www'}
 					saveUrl={(event) => this.saveUrls(event, 'toWWW')}
 					generateRedirection={() => this.generateRedirection('toWWW')}
 					resultRedirection={this.state.resultToWWW}
 				/>
-				<OtherRedirections
+				<NonGeneratedRedirection
 					stateName="toHttps"
-					description={'Przekierowanie z http -> https (podać bez http/s)'}
-					saveUrl={(event) => this.saveUrls(event, 'toHttps')}
-					generateRedirection={() => this.generateRedirection('toHttps')}
-					resultRedirection={this.state.resultToHttps}
+					description={'Przekierowanie z http -> https /'}
+					firstLine={`RewriteCond %{HTTPS} !=on\n`}
+					secondLine={`RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`}
 				/>
 				<OtherRedirections
 					stateName="toHttp"
-					description={'Przekierowanie z https -> http (podać bez http/s)'}
+					info="Adres podać bez http/https"
+					description={'Przekierowanie z https -> http'}
 					saveUrl={(event) => this.saveUrls(event, 'toHttp')}
 					generateRedirection={() => this.generateRedirection('toHttp')}
 					resultRedirection={this.state.resultToHttp}
