@@ -30,6 +30,7 @@ class Main extends Component {
 	};
 
 	parseStringToArray = (urlString) => {
+		urlString = urlString.replace(/ /g, '%');
 		return urlString.split(this.state.separator);
 	};
 
