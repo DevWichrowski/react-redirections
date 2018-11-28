@@ -115,7 +115,7 @@ hr {
   margin-right: 10px !important;
 }
 
-.chosen-separator {
+.chosen-separator, .separator-container #url-root-part .url-part {
   text-align: center;
   width: 30px;
   border-radius: 3px;
@@ -125,6 +125,15 @@ hr {
 .separator-container {
   position: relative;
   top: 2.5vw;
+}
+
+.separator-container #url-root-part {
+  margin-left: 20px;
+}
+
+.separator-container #url-root-part .url-part {
+  width: 220px;
+  text-align: left;
 }
 
 @media screen and (max-width: 1100px) {

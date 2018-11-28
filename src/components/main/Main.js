@@ -12,7 +12,8 @@ class Main extends Component {
 			copySuccess: '',
 			errorLeft: false,
 			errorRight: false,
-			separator: '\n'
+			separator: '\n',
+			urlRootPart: ''
 		};
 	}
 
@@ -22,6 +23,10 @@ class Main extends Component {
 
 	changeUrlTo = (event) => {
 		this.setState({ urlsTo: this.parseStringToArray(event.target.value) });
+	};
+
+	setUrlRootPart = (event) => {
+		this.setState({ urlRootPart: event.target.value});
 	};
 
 	setSeparator = (event) => {
@@ -38,6 +43,7 @@ class Main extends Component {
 		let result = '';
 
 		urlsFrom.map((item, index) => {
+			item = item.split(this.state.urlRootPart).pop();
 			result += `RewriteRule ^${item}$ ${urlsTo[index]} [R=301,L]\n`;
 			return true;
 		});
@@ -51,6 +57,7 @@ class Main extends Component {
 				errorLeft: false,
 				errorRight: false
 			});
+			console.log(this.state.urlRootPart)
 		} else if (this.state.urlsFrom.length > this.state.urlsTo.length) {
 			this.setState({
 				result:
@@ -146,7 +153,14 @@ class Main extends Component {
 							Wybierz separator - domyślnie ustawiony jest <strong>enter</strong>:
 						</label>
 						<input id="separator" className="chosen-separator" onChange={this.setSeparator} />
+						<span id="url-root-part">
+						<label htmlFor="separator" className="label-separator">
+							Wpisz tutaj początek adresu url<strong></strong>:
+						</label>
+						<input className="url-part" onChange={this.setUrlRootPart} placeholder="https://przyklad.pl/" />
+						</span>
 					</div>
+
 					<button id="result-textarea" className="center-item btn btn-success" onClick={this.generateUrl}>
 						Generuj
 					</button>
