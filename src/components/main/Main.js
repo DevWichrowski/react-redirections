@@ -37,7 +37,7 @@ class Main extends Component {
 		let result = '';
 
 		urlsFrom.map((item, index) => {
-			result += `RewriteRule ^${item}$ ^${urlsTo[index]}$ [R=301,L]\n`;
+			result += `RewriteRule ^${item}$ ${urlsTo[index]} [R=301,L]\n`;
 			return true;
 		});
 		return result;
