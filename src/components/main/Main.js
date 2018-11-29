@@ -12,7 +12,8 @@ class Main extends Component {
 			copySuccess: '',
 			errorLeft: false,
 			errorRight: false,
-			separator: '\n'
+			separator: '\n',
+			urlRootPart: ''
 		};
 	}
 
@@ -24,12 +25,17 @@ class Main extends Component {
 		this.setState({ urlsTo: this.parseStringToArray(event.target.value) });
 	};
 
+	setUrlRootPart = (event) => {
+		this.setState({ urlRootPart: event.target.value });
+	};
+
 	setSeparator = (event) => {
 		this.setState({ separator: event.target.value });
 		console.log(this.state.separator);
 	};
 
 	parseStringToArray = (urlString) => {
+		urlString = urlString.replace(/ /g, '%');
 		return urlString.split(this.state.separator);
 	};
 
@@ -37,7 +43,8 @@ class Main extends Component {
 		let result = '';
 
 		urlsFrom.map((item, index) => {
-			result += `RewriteRule ^${item}$ ^${urlsTo[index]}$ [R=301,L]\n`;
+			item = item.split(this.state.urlRootPart).pop();
+			result += `RewriteRule ^${item}?$ ${urlsTo[index]} [R=301,L]\n`;
 			return true;
 		});
 		return result;
@@ -50,6 +57,7 @@ class Main extends Component {
 				errorLeft: false,
 				errorRight: false
 			});
+			console.log(this.state.urlRootPart);
 		} else if (this.state.urlsFrom.length > this.state.urlsTo.length) {
 			this.setState({
 				result:
@@ -110,7 +118,10 @@ class Main extends Component {
 								w <strong>prawym</strong> polu na co mają być przekierowane
 							</p>
 							<p>W polu poniżej wygenerują się reguły gotowe do wklejenia w plik .htaccess </p>
-							<p>Możesz także wybrać swój <strong>separator</strong>, domyślnie aplikacja korzysta z separatora Enter, lecz możesz zmienić na jaki jest ci potrzebny.</p>
+							<p>
+								Możesz także wybrać swój <strong>separator</strong>, domyślnie aplikacja korzysta z
+								separatora Enter, lecz możesz zmienić na jaki jest ci potrzebny.
+							</p>
 							<p>
 								{' '}
 								Możesz skopiować wygenerowane przekierowania za pomoca przycisku{' '}
@@ -145,10 +156,32 @@ class Main extends Component {
 							Wybierz separator - domyślnie ustawiony jest <strong>enter</strong>:
 						</label>
 						<input id="separator" className="chosen-separator" onChange={this.setSeparator} />
+						<span id="url-root-part">
+							<label htmlFor="separator" className="label-separator">
+								Wpisz tutaj początek adresu url<strong />:
+							</label>
+							<input
+								className="url-part"
+								onChange={this.setUrlRootPart}
+								placeholder="https://przyklad.pl/"
+								required={true}
+							/>
+						</span>
 					</div>
-					<button id="result-textarea" className="center-item btn btn-success" onClick={this.generateUrl}>
-						Generuj
-					</button>
+					{this.state.urlRootPart !== '' ? (
+						<button id="result-textarea" className="center-item btn btn-success" onClick={this.generateUrl}>
+							Generuj
+						</button>
+					) : (
+						<button
+							id="result-textarea"
+							className="center-item btn btn-success"
+							onClick={this.generateUrl}
+							disabled
+						>
+							Generuj
+						</button>
+					)}
 				</div>
 				<div className="button-container">
 					<label htmlFor="result-textarea">Wygenerowane przekierowania:</label>
