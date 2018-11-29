@@ -44,7 +44,7 @@ class Main extends Component {
 
 		urlsFrom.map((item, index) => {
 			item = item.split(this.state.urlRootPart).pop();
-			result += `RewriteRule ^${item}$ ${urlsTo[index]} [R=301,L]\n`;
+			result += `RewriteRule ^${item}?$ ${urlsTo[index]} [R=301,L]\n`;
 			return true;
 		});
 		return result;
