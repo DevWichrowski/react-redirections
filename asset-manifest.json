@@ -1,13 +1,13 @@
 {
-  "main.css": "/react-redirections/static/css/main.8607f44b.chunk.css",
-  "main.js": "/react-redirections/static/js/main.c6db9e53.chunk.js",
-  "main.js.map": "/react-redirections/static/js/main.c6db9e53.chunk.js.map",
-  "static/js/1.6efe929d.chunk.js": "/react-redirections/static/js/1.6efe929d.chunk.js",
-  "static/js/1.6efe929d.chunk.js.map": "/react-redirections/static/js/1.6efe929d.chunk.js.map",
+  "main.css": "/react-redirections/static/css/main.24460522.chunk.css",
+  "main.js": "/react-redirections/static/js/main.44922dcc.chunk.js",
+  "main.js.map": "/react-redirections/static/js/main.44922dcc.chunk.js.map",
+  "static/js/1.ebc2f23c.chunk.js": "/react-redirections/static/js/1.ebc2f23c.chunk.js",
+  "static/js/1.ebc2f23c.chunk.js.map": "/react-redirections/static/js/1.ebc2f23c.chunk.js.map",
   "runtime~main.js": "/react-redirections/static/js/runtime~main.36869c1a.js",
   "runtime~main.js.map": "/react-redirections/static/js/runtime~main.36869c1a.js.map",
-  "static/css/main.8607f44b.chunk.css.map": "/react-redirections/static/css/main.8607f44b.chunk.css.map",
+  "static/css/main.24460522.chunk.css.map": "/react-redirections/static/css/main.24460522.chunk.css.map",
   "index.html": "/react-redirections/index.html",
-  "precache-manifest.f8282b7e871db1869f9749d319aa1b3f.js": "/react-redirections/precache-manifest.f8282b7e871db1869f9749d319aa1b3f.js",
+  "precache-manifest.d639a8ef651789b6b3374f5afb43d988.js": "/react-redirections/precache-manifest.d639a8ef651789b6b3374f5afb43d988.js",
   "service-worker.js": "/react-redirections/service-worker.js"
 }
