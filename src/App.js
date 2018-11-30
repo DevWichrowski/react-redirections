@@ -9,16 +9,16 @@ import OtherTools from './components/otherTools/OtherTools';
 class App extends Component {
 	render() {
 		return (
-			<div>
+			<BrowserRouter>
+			<>
 				<Header />
-				<BrowserRouter>
-					<div>
-						<Route exact path="/react-redirections/" component={Main} />
-						<Route path="/narzedzia" component={OtherTools} />
-					</div>
-				</BrowserRouter>
+				<div>
+					<Route exact path="/" component={Main} />
+					<Route path="/narzedzia" component={OtherTools} />
+				</div>
 				<Footer />
-			</div>
+			</>
+			</BrowserRouter>
 		);
 	}
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
@@ -16,17 +17,17 @@ const Header = () => {
 					<span className="logo-text">DevWichrowski</span>
 				</a>
 				<span className="buttons-flex">
-					<a href="/react-redirections/">
+					<NavLink to="/">
 						<button type="button" className="btn btn-info">
 							Przekierowania 301
 						</button>
 						<span className="sr-only">(current)</span>
-					</a>
-					<a href="/narzedzia">
+					</NavLink>
+					<NavLink to="/narzedzia">
 						<button type="button" className="btn btn-info">
 							Inne przekierowania
 						</button>
-					</a>
+					</NavLink>
 				</span>
 			</nav>
 		</div>

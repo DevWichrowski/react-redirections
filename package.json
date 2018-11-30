@@ -11,12 +11,14 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
+  "homepage": "https://devwichrowski.github.io/react-redirections/",
   "browserslist": [
     ">0.2%",
     "not dead",
