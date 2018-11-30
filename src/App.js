@@ -14,7 +14,7 @@ class App extends Component {
 				<BrowserRouter>
 					<div>
 						<Route exact path="/react-redirections/" component={Main} />
-						<Route path="/react-redirections/narzedzia" component={OtherTools} />
+						<Route path="/narzedzia" component={OtherTools} />
 					</div>
 				</BrowserRouter>
 				<Footer />

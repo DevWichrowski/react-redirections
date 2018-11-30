@@ -22,7 +22,7 @@ const Header = () => {
 						</button>
 						<span className="sr-only">(current)</span>
 					</a>
-					<a href="/react-redirections/narzedzia">
+					<a href="/narzedzia">
 						<button type="button" className="btn btn-info">
 							Inne przekierowania
 						</button>
