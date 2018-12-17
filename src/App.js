@@ -13,7 +13,7 @@ class App extends Component {
 			<>
 				<Header />
 				<div>
-					<Route exact path="/" component={Main} />
+					<Route exact path="/react-redirections" component={Main} />
 					<Route path="/narzedzia" component={OtherTools} />
 				</div>
 				<Footer />
