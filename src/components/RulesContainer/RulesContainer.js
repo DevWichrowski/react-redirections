@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import OtherRedirections from '../OtherRedirection/OtherRedirections';
-import NonGeneratedRedirection from '../NonGeneratedRedirection/NonGeneratedRedirection';
-import './OtherTools.scss';
+import RulesBox from '../RulesBox/RulesBox';
+import StaticRedirects from '../StaticRedirects/StaticRedirects';
+import './RulesContainer.scss';
 
-export default class OtherTools extends Component {
+export default class RulesContainer extends Component {
 	constructor(props) {
 		super(props);
 
@@ -60,13 +60,13 @@ export default class OtherTools extends Component {
 			<div className="page-body">
 				<h1 className="h1-tools">Inne reguły przekierowań</h1>
 				<hr />
-				<NonGeneratedRedirection
+				<StaticRedirects
 					stateName="toIndexPhp"
 					description={'Przekierowanie z index.php na /'}
 					firstLine={`RewriteCond %{THE_REQUEST} ^.*/index\\.php`}
 					secondLine={`RewriteRule ^(.*)index.php$ /$1 [R=301,L]`}
 				/>
-				<OtherRedirections
+				<RulesBox
 					stateName="nonWWW"
 					info="Adres podać bez http/https"
 					description={'Przekierowanie z www -> bez www'}
@@ -74,7 +74,7 @@ export default class OtherTools extends Component {
 					generateRedirection={() => this.generateRedirection('nonWWW')}
 					resultRedirection={this.state.resultNonWWW}
 				/>
-				<OtherRedirections
+				<RulesBox
 					stateName="toWWW"
 					info="Adres podać bez http/https"
 					description={'Przekierowanie z bez www -> www'}
@@ -82,13 +82,13 @@ export default class OtherTools extends Component {
 					generateRedirection={() => this.generateRedirection('toWWW')}
 					resultRedirection={this.state.resultToWWW}
 				/>
-				<NonGeneratedRedirection
+				<StaticRedirects
 					stateName="toHttps"
 					description={'Przekierowanie z http -> https'}
 					firstLine={`RewriteCond %{HTTPS} !=on\n`}
 					secondLine={`RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`}
 				/>
-				<OtherRedirections
+				<RulesBox
 					stateName="toHttp"
 					info="Adres podać bez http/https"
 					description={'Przekierowanie z https -> http'}

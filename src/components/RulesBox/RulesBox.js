@@ -1,7 +1,7 @@
 import React from 'react';
-import './OtherRedirections.scss';
+import './RulesBox.scss';
 
-export default function OtherRedirections(props) {
+export default function RulesBox(props) {
 	return (
 		<div>
 			<div className="page-body">
