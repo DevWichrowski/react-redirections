@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import './CombinedRulesContainer.scss';
+import './CombinedRules.scss';
 import RulesBox from "../../Rules/RulesBox/RulesBox";
 
-class CombinedRulesContainer extends Component {
+class CombinedRules extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -108,4 +108,4 @@ class CombinedRulesContainer extends Component {
     }
 }
 
-export default CombinedRulesContainer;
+export default CombinedRules;

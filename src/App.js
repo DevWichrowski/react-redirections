@@ -5,7 +5,7 @@ import Main from './components/MainRedirections/Main';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import RulesContainer from './components/Rules/RulesContainer/RulesContainer';
-import CombinedRulesContainer from "./components/Rules/CombinedRulesContainer/CombinedRulesContainer";
+import CombinedRules from "./components/Rules/CombinedRules/CombinedRules";
 
 class App extends Component {
 	render() {
@@ -15,7 +15,7 @@ class App extends Component {
 				<Header />
 				<div>
 					<Route exact path="/" component={Main} />
-					<Route exact path="/narzedzia" component={CombinedRulesContainer} />
+					<Route exact path="/narzedzia" component={CombinedRules} />
 					<Route path="/inne" component={RulesContainer} />
 				</div>
 				<Footer />
