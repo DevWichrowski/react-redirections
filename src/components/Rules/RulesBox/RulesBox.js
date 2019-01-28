@@ -3,6 +3,26 @@ import './RulesBox.scss';
 
 
 class RulesBox extends Component {
+	constructor(props){
+		super(props);
+
+		this.state={
+			copySuccess: '',
+		}
+	}
+
+	copyToClipboard = (e) => {
+		this.textArea.select();
+		document.execCommand('copy');
+		// This is just personal preference.
+		// I prefer to not show the the whole text area selected.
+		e.target.focus();
+		this.setState({ copySuccess: 'Skopiowano do schowka!' });
+		setTimeout(() => {
+			this.setState({ copySuccess: '' });
+		}, 2000);
+	};
+
 	render() {
 		return (
 			<div>
@@ -21,6 +41,7 @@ class RulesBox extends Component {
 						<div className="collapse" id={this.props.stateName}>
 							<div className="card card-body">
 								<p>{this.props.info}</p>
+								<p className="push-right">{this.state.copySuccess}</p>
 								<div className="inputs">
 							<textarea
 								type="text"
@@ -34,8 +55,9 @@ class RulesBox extends Component {
 										placeholder="Tutaj pokaże się wygenerowana reguła"
 										value={this.props.resultRedirection}
 										readOnly={true}
+										ref={(textarea) => (this.textArea = textarea)}
 									/>
-									<button type="button" className="btn btn-light push-right">Kopiuj</button>
+									<button type="button" className="btn btn-light push-right" onClick={this.copyToClipboard}>Kopiuj</button>
 								</div>
 								<button id="result-textarea" className="btn btn-danger" onClick={this.props.generateRedirection}>
 									Generuj
