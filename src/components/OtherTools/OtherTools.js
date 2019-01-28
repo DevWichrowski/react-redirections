@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import OtherRedirections from '../OtherRedirection/OtherRedirections';
 import NonGeneratedRedirection from '../NonGeneratedRedirection/NonGeneratedRedirection';
-import './OtherTools.css';
+import './OtherTools.scss';
 
 export default class OtherTools extends Component {
 	constructor(props) {

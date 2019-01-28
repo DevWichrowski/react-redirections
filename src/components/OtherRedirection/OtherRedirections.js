@@ -1,5 +1,5 @@
 import React from 'react';
-import './OtherRedirections.css';
+import './OtherRedirections.scss';
 
 export default function OtherRedirections(props) {
 	return (
