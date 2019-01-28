@@ -33,6 +33,7 @@ export default function RulesBox(props) {
 								value={props.resultRedirection}
 								readOnly={true}
 							/>
+							<button type="button" className="btn btn-light push-right">Kopiuj</button>
 						</div>
 						<button id="result-textarea" className="btn btn-danger" onClick={props.generateRedirection}>
 							Generuj
