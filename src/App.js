@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import './styles/app/App.css';
-import Main from './components/main/Main';
-import Footer from './components/footer/Footer';
-import Header from './components/header/Header';
-import OtherTools from './components/otherTools/OtherTools';
+import Main from './components/Main/Main';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import OtherTools from './components/OtherTools/OtherTools';
 
 class App extends Component {
 	render() {
@@ -13,8 +13,8 @@ class App extends Component {
 			<>
 				<Header />
 				<div>
-					<Route exact path="/react-redirections" component={Main} />
-					<Route path="/narzedzia" component={OtherTools} />
+					<Route exact path="/" component={Main} />
+					<Route path="/inne" component={OtherTools} />
 				</div>
 				<Footer />
 			</>
