@@ -23,6 +23,7 @@ class CombinedRulesContainer extends Component {
     createRedirection = (urlToRedirect, redirectionType) => {
         let result = '';
         switch (redirectionType) {
+            //http://bez_www.(domena) -> https://www.(domena)
             case 'toWWWandHTTPS':
                 result = `RewriteEngine On\n`;
                 result += `RewriteCond %{HTTP_HOST} !^www\\.\n`;
@@ -30,11 +31,13 @@ class CombinedRulesContainer extends Component {
                 result += `RewriteCond %{HTTPS} off`;
                 result += `RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`;
                 break;
+                //http://(www.domena) -> https://(www.domena)
             case 'toHTTPS':
                 result = `RewriteEngine On\n`;
                 result += `RewriteCond %{HTTPS} !=on\n`;
                 result += `RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`;
                 break;
+                //https://bez_www.(domena) -> https://www.(domena)
             case 'toWWW':
                 result = `RewriteEngine On\n`;
                 result += `RewriteCond %{HTTP_HOST} ^${urlToRedirect}$ [NC]\n`;
