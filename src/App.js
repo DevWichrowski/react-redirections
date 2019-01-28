@@ -4,7 +4,8 @@ import './styles/app/App.scss';
 import Main from './components/MainRedirections/Main';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
-import RulesContainer from './components/RulesContainer/RulesContainer';
+import RulesContainer from './components/Rules/RulesContainer/RulesContainer';
+import CombinedRulesContainer from "./components/CombinedRules/CombinedRulesContainer/CombinedRulesContainer";
 
 class App extends Component {
 	render() {
@@ -14,6 +15,7 @@ class App extends Component {
 				<Header />
 				<div>
 					<Route exact path="/" component={Main} />
+					<Route exact path="/narzedzia" component={CombinedRulesContainer} />
 					<Route path="/inne" component={RulesContainer} />
 				</div>
 				<Footer />
