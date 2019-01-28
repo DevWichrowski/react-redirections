@@ -5,7 +5,7 @@ import Main from './components/MainRedirections/Main';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import RulesContainer from './components/Rules/RulesContainer/RulesContainer';
-import CombinedRulesContainer from "./components/CombinedRules/CombinedRulesContainer/CombinedRulesContainer";
+import CombinedRulesContainer from "./components/Rules/CombinedRulesContainer/CombinedRulesContainer";
 
 class App extends Component {
 	render() {
