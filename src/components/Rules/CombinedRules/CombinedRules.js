@@ -26,7 +26,7 @@ class CombinedRules extends Component {
             //http://bez_www.(domena) -> https://www.(domena)
             case 'toWWWandHTTPS':
                 result = `RewriteEngine On\n`;
-                result += `RewriteCond %{HTTP_HOST} !^www.\n`;
+                result += `RewriteCond %${urlToRedirect} !^www.\n`;
                 result += `RewriteRule ^(.*)$ https://www.${urlToRedirect}%{REQUEST_URI} [L,R=301]\n`;
                 result += `RewriteCond %{HTTPS} off\n`;
                 result += `RewriteRule ^(.*)$ https://${urlToRedirect}%{REQUEST_URI} [L,R=301]\n`;
@@ -81,24 +81,24 @@ class CombinedRules extends Component {
                 <hr />
                 <RulesBox
                     stateName="toWWWandHTTPS"
-                    info="?"
-                    description={'Przekierowanie z bez www i http -> www i https'}
+                    info="Adres podać bez http(s)/www np. example.pl"
+                    description={'Przekierowanie z bez www/bez https -> www/https'}
                     saveUrl={(event) => this.saveUrls(event, 'toWWWandHTTPS')}
                     generateRedirection={() => this.generateRedirection('toWWWandHTTPS')}
                     resultRedirection={this.state.resultToWWWandHTTPS}
                 />
                 <RulesBox
                     stateName="toHTTPS"
-                    info="?"
-                    description={'Przekierowanie z bez www i http -> www i https'}
+                    info="Adres podać bez http(s)/www np. example.pl"
+                    description={'Przekierowanie www/bez https -> www/https'}
                     saveUrl={(event) => this.saveUrls(event, 'toHTTPS')}
                     generateRedirection={() => this.generateRedirection('toHTTPS')}
                     resultRedirection={this.state.resultToHTTPS}
                 />
                 <RulesBox
                     stateName="toWWW"
-                    info="?"
-                    description={'Przekierowanie z bez www i http -> www i https'}
+                    info="Adres podać bez http(s)/www np. example.pl"
+                    description={'Przekierowanie z bez www/https -> www/https'}
                     saveUrl={(event) => this.saveUrls(event, 'toWWW')}
                     generateRedirection={() => this.generateRedirection('toWWW')}
                     resultRedirection={this.state.resultToWWW}
