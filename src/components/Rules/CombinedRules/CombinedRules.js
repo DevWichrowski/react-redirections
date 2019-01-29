@@ -26,7 +26,7 @@ class CombinedRules extends Component {
             //http://bez_www.(domena) -> https://www.(domena)
             case 'toWWWandHTTPS':
                 result = `RewriteEngine On\n`;
-                result += `RewriteCond %${urlToRedirect} !^www.\n`;
+                result += `RewriteCond %{HTTP_HOST} !^www.\n`;
                 result += `RewriteRule ^(.*)$ https://www.${urlToRedirect}%{REQUEST_URI} [L,R=301]\n`;
                 result += `RewriteCond %{HTTPS} off\n`;
                 result += `RewriteRule ^(.*)$ https://${urlToRedirect}%{REQUEST_URI} [L,R=301]\n`;

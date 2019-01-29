@@ -34,7 +34,7 @@ export default class RulesContainer extends Component {
 				break;
 			case 'toHttp':
 				result = `RewriteCond %{HTTPS}=on\n`;
-				result += `RewriteRule ^(.*)$ http://${urlToRedirect}/$1 [R=301,L]`;
+				result += `RewriteRule ^(.*)$ http://${urlToRedirect}%{REQUEST_URI} [R=301,L]`;
 				break;
 			default:
 				result = 'Unknown url';
