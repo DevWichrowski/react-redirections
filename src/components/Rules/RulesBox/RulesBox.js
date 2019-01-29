@@ -56,8 +56,7 @@ class RulesBox extends Component {
 										readOnly={true}
 										ref={(textarea) => (this.textArea = textarea)}
 									/>
-									<button type="button" className="btn btn-light push-right" onClick={this.copyToClipboard}>{this.state.copySuccess === ''? <span>Kopiuj</span>
-										: <span>Skopiowano</span>}</button>
+									<button type="button" className="btn btn-light push-right" onClick={this.copyToClipboard}>Kopiuj</button>
 								</div>
 								<button id="result-textarea" className="btn btn-danger" onClick={this.props.generateRedirection}>
 									Generuj
