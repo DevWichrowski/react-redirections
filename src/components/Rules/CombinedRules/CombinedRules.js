@@ -26,10 +26,10 @@ class CombinedRules extends Component {
             //http://bez_www.(domena) -> https://www.(domena)
             case 'toWWWandHTTPS':
                 result = `RewriteEngine On\n`;
-                result += `RewriteCond %{HTTP_HOST} !^www\\.\n`;
-                result += `RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`;
-                result += `RewriteCond %{HTTPS} off`;
-                result += `RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`;
+                result += `RewriteCond %{HTTP_HOST} !^www\.\n`;
+                result += `RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n`;
+                result += `RewriteCond %{HTTPS} off\n`;
+                result += `RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n`;
                 break;
                 //http://(www.domena) -> https://(www.domena)
             case 'toHTTPS':

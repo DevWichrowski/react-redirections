@@ -17,7 +17,7 @@ class RulesBox extends Component {
 		// This is just personal preference.
 		// I prefer to not show the the whole text area selected.
 		e.target.focus();
-		this.setState({ copySuccess: 'Skopiowano do schowka!' });
+		this.setState({ copySuccess: 'Skopiowane' });
 		setTimeout(() => {
 			this.setState({ copySuccess: '' });
 		}, 2000);
@@ -41,7 +41,6 @@ class RulesBox extends Component {
 						<div className="collapse" id={this.props.stateName}>
 							<div className="card card-body">
 								<p>{this.props.info}</p>
-								<p className="push-right">{this.state.copySuccess}</p>
 								<div className="inputs">
 							<textarea
 								type="text"
@@ -57,7 +56,8 @@ class RulesBox extends Component {
 										readOnly={true}
 										ref={(textarea) => (this.textArea = textarea)}
 									/>
-									<button type="button" className="btn btn-light push-right" onClick={this.copyToClipboard}>Kopiuj</button>
+									<button type="button" className="btn btn-light push-right" onClick={this.copyToClipboard}>{this.state.copySuccess === ''? <span>Kopiuj</span>
+										: <span>Skopiowano</span>}</button>
 								</div>
 								<button id="result-textarea" className="btn btn-danger" onClick={this.props.generateRedirection}>
 									Generuj
