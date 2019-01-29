@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function NonGeneratedRedirection(props) {
+export default function StaticRedirects(props) {
 	return (
 		<div>
 			<div className="summary-index-php">

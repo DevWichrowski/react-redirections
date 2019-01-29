@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Main.css';
+import './MainRedirections.scss';
 
-class Main extends Component {
+class MainRedirections extends Component {
 	constructor(props) {
 		super(props);
 
@@ -202,4 +202,4 @@ class Main extends Component {
 	}
 }
 
-export default Main;
+export default MainRedirections;

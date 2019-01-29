@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import './styles/app/App.css';
-import Main from './components/main/Main';
-import Footer from './components/footer/Footer';
-import Header from './components/header/Header';
-import OtherTools from './components/otherTools/OtherTools';
+import './styles/app/App.scss';
+import MainRedirections from './components/MainRedirections/MainRedirections';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import RulesContainer from './components/Rules/RulesContainer/RulesContainer';
+import CombinedRules from "./components/Rules/CombinedRules/CombinedRules";
 
 class App extends Component {
 	render() {
 		return (
-			<div>
+			<BrowserRouter>
+			<>
 				<Header />
-				<BrowserRouter>
-					<div>
-						<Route exact path="/react-redirections/" component={Main} />
-						<Route path="/react-redirections/narzedzia" component={OtherTools} />
-					</div>
-				</BrowserRouter>
+				<div>
+					<Route exact path="/" component={MainRedirections} />
+					<Route exact path="/narzedzia" component={CombinedRules} />
+					<Route path="/inne" component={RulesContainer} />
+				</div>
 				<Footer />
-			</div>
+			</>
+			</BrowserRouter>
 		);
 	}
 }
